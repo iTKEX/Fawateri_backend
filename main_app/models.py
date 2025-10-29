@@ -1,6 +1,19 @@
+"""
+TABLE OF CONTENT
+- IMPORTS
+- Models Classes
+    - Bill model
+
+"""
+
+########## IMPORTS ##########
 from django.db import models
 
-# Create your models here.
+
+########## Models Classes ##########
+
+
+# Bill model
 class Bill(models.Model):
     company = models.CharField(max_length=50)
     title = models.CharField(max_length=50)
@@ -8,6 +21,6 @@ class Bill(models.Model):
     created_at = models.DateField(auto_now_add=True)
     warranty = models.CharField(max_length=50, blank=True)
     cost = models.CharField(max_length=50)
-    
+
     def __str__(self):
-        return f'{self.company}, {self.title}'
+        return f"{self.company}, {self.title}"
