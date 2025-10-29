@@ -41,7 +41,7 @@ class Bill(models.Model):
 # Image model
 class Image(models.Model):
     title = models.CharField(max_length=50)
-    url = models.TextField()
+    url = models.CharField(max_length=200)
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     bill = models.OneToOneField(Bill, on_delete=models.CASCADE)
