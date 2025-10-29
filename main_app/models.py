@@ -24,3 +24,13 @@ class Bill(models.Model):
 
     def __str__(self):
         return f"{self.company}, {self.title}"
+    
+class Image(models.Model):
+    title = models.CharField(max_length=50)
+    url = models.TextField()
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
+    bill = models.OneToOneField(Bill, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for Bill: {self.bill.id} @{self.url}"
