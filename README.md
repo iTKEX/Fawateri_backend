@@ -2,7 +2,7 @@
 
 ## Entity Relationship Diagram (ERD).
 
-![ERD](assets/ERD.svg)
+![ERD](assets/Fawateri-ERD.svg)
 
 ## Routing Table
 
@@ -17,12 +17,12 @@
     </thead>
     <tbody>
         <tr>
-            <td>GET</td>
+            <td>POST</td>
             <td>/users/signup/</td>
             <td>Create new user account.</td>
         </tr>
         <tr>
-            <td>POST</td>
+            <td>GET</td>
             <td>/users/login/</td>
             <td>Log in to an existing user account.</td>
         </tr>
@@ -86,21 +86,6 @@
             <td>GET</td>
             <td>/catagories</td>
             <td>List All catagories</td>
-        </tr>
-        <tr>
-            <td>GET</td>
-            <td>/catagories/{id}</td>
-            <td>Show details of catagory</td>
-        </tr>
-        <tr>
-            <td>POST</td>
-            <td>/catagories</td>
-            <td>create new catagory</td>
-        </tr>
-        <tr>
-            <td>PUT</td>
-            <td>/catagories/{id}</td>
-            <td>Update catagory details</td>
         </tr>
         <tr>
             <td>DELETE</td>
