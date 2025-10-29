@@ -10,7 +10,7 @@ TABLE OF CONTENT
 
 ########## IMPORTS ##########
 from rest_framework import serializers
-from .models import Bill, Image, Category
+from .models import Bill, Image, Category, Reminder
 
 ########## Models Serializers ##########
 
@@ -38,3 +38,9 @@ class BillSerializer(serializers.ModelSerializer):
         model = Bill
         fields = "__all__"
 
+
+# ReminderSerializer
+class ReminderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reminder
+        fields = "__all__"

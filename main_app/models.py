@@ -2,8 +2,10 @@
 TABLE OF CONTENT
 - IMPORTS
 - Models Classes
+    - Category model
     - Bill model
-
+    - Image model
+    - Reminder model
 """
 
 ########## IMPORTS ##########
@@ -46,3 +48,14 @@ class Image(models.Model):
 
     def __str__(self):
         return f"Photo for Bill: {self.bill.id} @{self.url}"
+
+
+# Reminder model
+class Reminder(models.Model):
+    title = models.CharField(max_length=100)
+    created_at = models.DateField(auto_now_add=True)
+    reminder_at = models.DateField()
+    bill = models.ForeignKey(Bill, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
