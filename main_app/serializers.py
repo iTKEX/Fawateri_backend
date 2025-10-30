@@ -31,9 +31,9 @@ class CategorySerializer(serializers.ModelSerializer):
 
 # BillSerializer
 class BillSerializer(serializers.ModelSerializer):
-    image = ImageSerializer(read_only=True)
-    locations = CategorySerializer(many=True, read_only=True)
-
+    # image = ImageSerializer(read_only=True)
+    category = CategorySerializer(many=True, read_only=True)
+    
     class Meta:
         model = Bill
         fields = "__all__"

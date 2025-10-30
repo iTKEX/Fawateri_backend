@@ -8,12 +8,17 @@ TABLE OF CONTENT
 
 ########## IMPORTS ##########
 from django.urls import path
-from .views import Home, BillsList
+from .views import Home, BillsList, CategoriesList, BillDetails
 
 ########## URLs Patterns ##########
 urlpatterns = [
     path("", Home.as_view(), name="home"),
-    
     # Bills URLs
     path("bills/", BillsList.as_view(), name="bills-list"),
+    path("bills/<int:bill_id>/", BillDetails.as_view(), name="bill-details"),
+    # Categories URLs
+    path("categories/", CategoriesList.as_view(), name="categories-list"),
+    # Bills URLs
+    path("reminders/", BillsList.as_view(), name="bills-list"),
+    # Users URLs
 ]
