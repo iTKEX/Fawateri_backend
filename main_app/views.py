@@ -12,8 +12,8 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics, status
-from .models import Bill, Category
-from .serializers import BillSerializer, CategorySerializer
+from .models import Bill, Category, Image
+from .serializers import BillSerializer, CategorySerializer, ImageSerializer
 from django.shortcuts import get_object_or_404
 
 
@@ -64,6 +64,39 @@ class BillDetails(generics.ListCreateAPIView):
         except Exception as err:
             return Response(
                 {"error": str(err)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+
+class BillImageView(APIView):
+    serializer_class = ImageSerializer
+
+    def post(self, request, bill_id):
+        try:
+            bill = get_object_or_404(Bill, id=bill_id)
+            Image.objects.filter(bill_id=bill_id).delete()
+
+            payload = request.data.copy()
+            payload["bill"] = bill_id
+
+            serializer = self.serializer_class(data=payload)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(BillSerializer(bill).data, status=status.HTTP_200_OK)
+
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as error:
+            return Response(
+                {"error": str(error)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+    def delete(self, request, bill_id):
+        try:
+            bill = get_object_or_404(Bill, id=bill_id)
+            Image.objects.filter(bill_id=bill_id).delete()
+            return Response(BillSerializer(bill).data, status=status.HTTP_200_OK)
+        except Exception as error:
+            return Response(
+                {"error": str(error)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
 
 
